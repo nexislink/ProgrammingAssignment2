@@ -11,17 +11,20 @@
 
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
-  #setMatrix <- function(y) {
-  # x <<- y
-  #  m <<- NULL
-  #}
+  # setMatrix is not used but may be useful in the future
+  setMatrix <- function(y) {
+    x <<- y
+    m <<- NULL
+  }
   getMatrix <- function() x
   setInv <- function(inv) m <<- inv
   getInv <- function() m
-  list(#setMatrix = setMatrix, 
-       getMatrix = getMatrix,
-       setInv = setInv,
-       getInv = getInv)
+  list(
+    setMatrix = setMatrix, 
+    getMatrix = getMatrix,
+    setInv = setInv,
+    getInv = getInv
+  )
 }
 
 
@@ -31,7 +34,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## if not it does the calculation and stores it in the object and displays the inverse
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  ## Return a matrix that is the inverse of 'x'
   
   m <- x$getInv()
   if(!is.null(m)) {
